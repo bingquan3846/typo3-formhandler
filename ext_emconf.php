@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "formhandler".
  *
- * Auto generated 05-03-2014 13:22
+ * Auto generated 05-03-2016 13:22
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
