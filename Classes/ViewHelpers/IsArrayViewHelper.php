@@ -27,4 +27,9 @@ class IsArrayViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper
         return (isset($arguments['condition']) && (true === is_array($arguments['value'])));
     }
 
+    public function initializeArguments()
+    {
+        $this->registerArgument('value', 'mixed', 'Condition to be evaluated.');
+        parent::initializeArguments();
+    }
 }

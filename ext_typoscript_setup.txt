@@ -41,7 +41,7 @@ module.tx_formhandler {
 			class = Typoheads\Formhandler\Generator\BackendCsv
 			config {
 				encoding = utf-8
-				delimiter = ,
+				delimiter = ;
 				enclosure = "
 				fileName = formhandler.csv
 			}

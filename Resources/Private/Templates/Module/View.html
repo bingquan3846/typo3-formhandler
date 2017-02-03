@@ -32,11 +32,23 @@
 							<tr>
 								<td class="col-xs-3">{field}</td>
 								<td class="col-xs-9">
-									<fh:isArray condition="{value}">
+									<fh:isArray condition="{value}" value="{value}">
 										<f:then>
 											<ul>
-												<f:for each="{value}" as="val">
-													<li>{val}</li>
+												<f:for each="{value}" as="val" key="key" >
+													<fh:isArray condition="{val}" value="{val}">
+														<f:then><li>{key}:
+															<ul>
+																<f:for each="{val}" as="item" key="key_item" >
+																	<li>{item}</li>
+																</f:for>
+															</ul>
+</li>
+														</f:then>
+														<f:else>
+															<li>{key}: {val}</li>
+														</f:else>
+													</fh:isArray>
 												</f:for>
 											</ul>
 										</f:then>

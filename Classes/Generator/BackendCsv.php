@@ -16,7 +16,7 @@ namespace Typoheads\Formhandler\Generator;
 /**
  * Class to generate CSV files in Backend
  *
- * @author    Reinhard FÃ¼hricht <rf@typoheads.at>
+ * @author    Reinhard Führicht <rf@typoheads.at>
  * @uses export2CSV in csv.lib.php
  */
 require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('formhandler') . 'Resources/PHP/parsecsv.lib.php');
@@ -83,7 +83,15 @@ class BackendCsv extends \Typoheads\Formhandler\Component\AbstractComponent
             }
             foreach ($record['params'] as $subIdx => &$param) {
                 if (is_array($param)) {
-                    $param = implode(';', $param);
+                    $param = implode('; ', array_map(
+                        function ($v, $k) {
+
+                            return sprintf("%s:%s", $k, is_array($v) ? implode('-',$v) : $v);
+
+                        },
+                        $param,
+                        array_keys($param)
+                    ));
                 }
             }
             if (count($exportParams) == 0 || in_array('pid', $exportParams)) {
@@ -147,7 +155,7 @@ class BackendCsv extends \Typoheads\Formhandler\Component\AbstractComponent
         $ordered = [];
         foreach ($orderArray as $idx => $key) {
             if (array_key_exists($key, $array)) {
-                $ordered[$key] = $array[$key];
+                $ordered[$key] = trim(preg_replace('/\s\s+/', ' ', $array[$key]));
                 unset($array[$key]);
             }
         }

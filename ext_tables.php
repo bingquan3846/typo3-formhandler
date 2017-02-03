@@ -10,6 +10,10 @@ if (!defined('TYPO3_MODE')) die ('Access denied.');
 
 if (TYPO3_MODE === 'BE') {
 
+    $TCA['tt_content']['columns']['layout']['config']['items'][] = ['Presse', 4];
+    $TCA['tt_content']['columns']['layout']['config']['items'][] = ['Content Holder', 5];
+    $TCA['tt_content']['columns']['layout']['config']['items'][] = ['Content Container', 6];
+
     $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem'] = '
 		--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
 		--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.header;header,
@@ -64,3 +68,5 @@ $TCA['pages']['columns']['module']['config']['items'][] = [
     'formlogs',
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'ext_icon.gif'
 ];
+
+ 
